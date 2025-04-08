@@ -4,27 +4,31 @@
     <h2 class="mb-2 text-dark">✏️ Modifier les détails du client</h2>
 </div>
 
+<div class="container-fluid mb-5 bg-light pt-4 pb-4">
+    <h4 class="mb-2 text-dark">Client n° <?= $client->getId(); ?> </h4>
+</div>
+
 <form action="?action=client-update" method="POST">
     <input type="hidden" name="id" value="<?= $client->getId() ?>">
 
     <div class="mb-3">
         <label for="name" class="form-label text-body-emphasis">Nom :</label>
-        <input type="text" class="form-control border border-info-subtle bg-light-subtle" id="name" name="name" value="<?= $client->getNom() ?>" required>
+        <input type="text" class="form-control border border-info-subtle bg-light-subtle" id="name" name="name" value="<?= $client->getNom() ?>">
     </div>
 
     <div class="mb-3">
         <label for="surname" class="form-label text-body-emphasis">Prénom :</label>
-        <input type="text" class="form-control border border-info-subtle bg-light-subtle" id="surname" name="surname" value="<?= $client->getPrenom() ?>" required>
+        <input type="text" class="form-control border border-info-subtle bg-light-subtle" id="surname" name="surname" value="<?= $client->getPrenom() ?>">
     </div>
 
     <div class="mb-3">
         <label for="email" class="form-label text-body-emphasis">Adresse mail :</label>
-        <input type="text" class="form-control border-info-subtle bg-light-subtle" id="email" name="email" value="<?= $client->getEmail() ?>" required>
+        <input type="text" class="form-control border-info-subtle bg-light-subtle" id="email" name="email" value="<?= $client->getEmail() ?>">
     </div>
 
     <div class="mb-5">
         <label for="phone" class="form-label text-body-emphasis">Numéro de téléphone :</label>
-        <input type="text" class="form-control border-info-subtle bg-light-subtle" id="phone" name="phone" value="<?= $client->getTelephone() ?>" required>
+        <input type="text" class="form-control border-info-subtle bg-light-subtle" id="phone" name="phone" value="<?= $client->getTelephone() ?>">
     </div>
 
     <div class="mb-5">
