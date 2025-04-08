@@ -43,7 +43,7 @@ switch ($action){
     // case 'contract-list':
     //     $contractControl->list();
     //     break;
-    case 'client-show':
+    case 'client-consult':
         $clientControl->show($id);
         break;
     // case 'account-show':

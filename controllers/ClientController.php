@@ -19,35 +19,35 @@ class ClientController
     public function set()
     {
         $client = new Client();
-        $client->setNom($_POST['client_name']);
-        $client->setPrenom($_POST['client_surname']);
-        $client->setEmail($_POST['client_mail']);
-        $client->setTelephone($_POST['client_phone']);
-        $client->setAdresse($_POST['client_location']);
+        $client->setNom($_POST['name']);
+        $client->setPrenom($_POST['surname']);
+        $client->setEmail($_POST['email']);
+        $client->setTelephone($_POST['phone']);
+        $client->setAdresse($_POST['location']);
 
         $this->clientRepository->addClient($client);
 
-        header('Location ?client-list');
+        header('Location: ?action=client-list');
 
     }
 
     public function list()
     {
-        $this->clientRepository->viewClients();
+        $clients= $this->clientRepository->viewClients();
 
         require_once __DIR__ . '/../views/clientViews/client-list.php';
     }
 
     public function show(int $id)
     {
-        $this->clientRepository->viewClient($id);
+        $client = $this->clientRepository->viewClient($id);
 
         require_once __DIR__ . '/../views/clientViews/client-show.php';
     }
 
     public function edit(int $id)
     {
-        $this->clientRepository->viewClient($id);
+        $client = $this->clientRepository->viewClient($id);
 
         require_once __DIR__ . '/../views/clientViews/client-edit.php';
     }
@@ -55,23 +55,23 @@ class ClientController
     public function update()
     {
         $client = new Client();
-        $client->setId($_POST['client_id']);
-        $client->setNom($_POST['client_name']);
-        $client->setPrenom($_POST['client_surname']);
-        $client->setEmail($_POST['client_mail']);
-        $client->setTelephone($_POST['client_phone']);
-        $client->setAdresse($_POST['client_location']);
+        $client->setId($_POST['id']);
+        $client->setNom($_POST['name']);
+        $client->setPrenom($_POST['surname']);
+        $client->setEmail($_POST['email']);
+        $client->setTelephone($_POST['phone']);
+        $client->setAdresse($_POST['location']);
 
         $this->clientRepository->updateClient($client);
 
-        header('Location ?client-show');
+        header('Location: ?action=client-list');
     }
 
     public function delete(int $id)
     {
         $this->clientRepository->deleteClient($id);
 
-        header('Location ?client-list');
+        header('Location: ?action=client-list');
     }
 
 

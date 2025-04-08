@@ -11,7 +11,6 @@ class Client {
     private string $telephone;
     private string $adresse;
 
-
     public function getId(): int{
         return $this->id;
     }

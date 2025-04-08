@@ -5,6 +5,7 @@
 </div>
 
 <form action="?action=client-update" method="POST">
+    <input type="hidden" name="id" value="<?= $client->getId() ?>">
 
     <div class="mb-3">
         <label for="name" class="form-label text-body-emphasis">Nom :</label>

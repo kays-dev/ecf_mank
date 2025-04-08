@@ -4,7 +4,7 @@
     <h2 class="mb-2 text-dark">➕ Créer un nouveau client</h2>
 </div>
 
-<form action="?action=client-create" method="POST">
+<form action="?action=client-set" method="POST">
 
     <div class="mb-3">
         <label for="name" class="form-label text-body-emphasis">Nom :</label>
@@ -21,7 +21,7 @@
         <input type="text" class="form-control border-info-subtle bg-light-subtle" id="email" name="email" required>
     </div>
 
-    <div class="mb-5">
+    <div class="mb-3">
         <label for="phone" class="form-label text-body-emphasis">Numéro de téléphone :</label>
         <input type="text" class="form-control border-info-subtle bg-light-subtle" id="phone" name="phone" required>
     </div>

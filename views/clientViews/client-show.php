@@ -5,10 +5,10 @@
 </div>
 
 <p><strong>Nom : </strong> <?= $client->getNom() ?></p>
-<p><strong>Prénom : </strong> <?= $client->getPrénom() ?></p>
+<p><strong>Prénom : </strong> <?= $client->getPrenom() ?></p>
 <p><strong>Adresse mail : </strong> <?= $client->getEmail() ?></p>
-<p class="mb-5"><strong>Numéro de téléphone : </strong><?= $client->getTelephone() ?></p>
-<p><strong>Adresse : </strong> <?= $client->getAdresse() ?></p>
+<p><strong>Numéro de téléphone : </strong><?= $client->getTelephone() ?></p>
+<p class="mb-5"><strong>Adresse : </strong> <?= $client->getAdresse() ?></p>
 
 <a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-info mb-3">✏️ Modifier les détails du client</a>
 <a href="?action=client-list" class="btn btn-light mb-3">🔙 Retour à la liste des clients</a>

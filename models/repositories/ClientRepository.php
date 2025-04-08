@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../Clients.php';
+require_once __DIR__ . '/../Client.php';
 
 class ClientRepository
 {
@@ -17,11 +17,11 @@ class ClientRepository
         $statement = $this->connection->getConnected()->prepare("INSERT INTO clients (client_name, client_surname, client_mail, client_phone, client_location) VALUES (:nom, :prenom, :email, :telephone, :adresse);");
 
         return $statement->execute([
-            'client_name' => $client->getNom(),
-            'client_surname' => $client->getPrenom(),
-            'client_mail' => $client->getEmail(),
-            'client_phone' => $client->getTelephone(),
-            'client_location' => $client->getAdresse(),
+            'nom' => $client->getNom(),
+            'prenom' => $client->getPrenom(),
+            'email' => $client->getEmail(),
+            'telephone' => $client->getTelephone(),
+            'adresse' => $client->getAdresse(),
         ]);
 
     }
@@ -75,14 +75,15 @@ class ClientRepository
     public function updateClient(Client $client): bool
     {
 
-        $statement = $this->connection->getConnected()->prepare("UPDATE TABLE clients SET client_name=:nom, client_surname=:prenom, client_mail=:email, client_phone=:telephone, client_location=:adresse WHERE client_id=:id");
+        $statement = $this->connection->getConnected()->prepare("UPDATE clients SET client_name=:nom, client_surname=:prenom, client_mail=:email, client_phone=:telephone, client_location=:adresse WHERE client_id=:id");
 
         return $statement->execute([
-            'client_name' => $client->getNom(),
-            'client_surname' => $client->getPrenom(),
-            'client_mail' => $client->getEmail(),
-            'client_phone' => $client->getTelephone(),
-            'client_location' => $client->getAdresse(),
+            'id' => $client->getId(),
+            'nom' => $client->getNom(),
+            'prenom' => $client->getPrenom(),
+            'email' => $client->getEmail(),
+            'telephone' => $client->getTelephone(),
+            'adresse' => $client->getAdresse(),
         ]);
 
     }

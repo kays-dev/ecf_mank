@@ -4,7 +4,7 @@
     <h2 class="mb-4 text-dark">👤 Liste des clients</h2>
 </div>
 
-<table class="table table-striped">
+<table class="table table-striped mb-5">
     <thead class="table-info">
         <tr>
             <th scope="col">Numéro client</th>
@@ -39,5 +39,8 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<a href="?action=client-create" class="btn btn-info mb-3">➕ Nouveau client</a>
+<a href="?action=dashboard" class="btn btn-light mb-3">🔙 Retour au tableau de bord</a>
 
 <?php require_once __DIR__ . '/../templates/footer.php';
