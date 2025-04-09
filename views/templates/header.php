@@ -10,9 +10,17 @@
 </head>
 
 <body class="d-flex flex-column" data-bs-theme="dark">
-    <nav class="navbar navbar-expand-lg justify-content-center"  style="background-color:rgb(102, 16, 242)" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg p-2"  style="background-color:rgb(102, 16, 242)" data-bs-theme="dark">
+        <div class="justify-content-left">
+            <a class="navbar-brand fs-1" href="?action=dashboard">🏧 M A N K 🏧</a>
+        </div>
+        <div class="m-5"></div>
+        <div class="justify-content-right">
+        <?php if(isConnected()): ?>
+            <a class="navbar-brand fs-1" href="?action=auth-logout">Déconnexion</a>
+        <?php endif; ?>
+        </div>
 
-            <a class="navbar-brand fs-1" href="?">🏧 M A N K 🏧</a>
 
     </nav>
 

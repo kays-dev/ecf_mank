@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../models/repositories/ClientRepository.php';
 require_once __DIR__ . '/../models/repositories/ContractRepository.php';
+require_once __DIR__ . '/../lib/utils.php';
 
 class ContractController
 {
@@ -16,66 +17,87 @@ class ContractController
 
     public function create()
     {
-        $clients = $this->clientRepository->viewClients();
+        if (isConnected()) {
+            $clients = $this->clientRepository->viewClients();
 
-        require_once __DIR__ . '/../views/contractViews/contract-create.php';
+            require_once __DIR__ . '/../views/contractViews/contract-create.php';
+            exit;
+        }
     }
 
     public function set()
     {
-        $contract = new Contract();
-        $contract->setType($_POST['type']);
-        $contract->setMontant($_POST['sum']);
-        $contract->setDuree($_POST['duration']);
-        $contract->setIdClient($_POST['clientNum']);
+        if (isConnected()) {
+            $contract = new Contract();
+            $contract->setType($_POST['type']);
+            $contract->setMontant($_POST['sum']);
+            $contract->setDuree($_POST['duration']);
+            $contract->setIdClient($_POST['clientNum']);
 
-        $this->contractRepository->addContract($contract);
+            $this->contractRepository->addContract($contract);
 
-        header('Location: ?action=contract-list');
+            header('Location: ?action=contract-list');
+            exit;
+        }
 
     }
 
     public function list()
     {
-        $contracts= $this->contractRepository->viewContracts();
+        if (isConnected()) {
+            $contracts = $this->contractRepository->viewContracts();
 
-        require_once __DIR__ . '/../views/contractViews/contract-list.php';
+            require_once __DIR__ . '/../views/contractViews/contract-list.php';
+            exit;
+        }
     }
 
     public function show(int $id)
     {
-        $contract = $this->contractRepository->viewContract($id);
-        $client = $this->clientRepository->viewClient($contract->getIdClient());
+        if (isConnected()) {
+            $contract = $this->contractRepository->viewContract($id);
+            $client = $this->clientRepository->viewClient($contract->getIdClient());
 
-        require_once __DIR__ . '/../views/contractViews/contract-show.php';
+            require_once __DIR__ . '/../views/contractViews/contract-show.php';
+            exit;
+        }
     }
 
     public function edit(int $id)
     {
-        $contract = $this->contractRepository->viewContract($id);
+        if (isConnected()) {
+            $contract = $this->contractRepository->viewContract($id);
 
-        require_once __DIR__ . '/../views/contractViews/contract-edit.php';
+            require_once __DIR__ . '/../views/contractViews/contract-edit.php';
+            exit;
+        }
     }
 
     public function update()
     {
-        $contract = new Contract();
-        $contract->setId($_POST['id']);
-        $contract->setType($_POST['type']);
-        $contract->setMontant($_POST['sum']);
-        $contract->setDuree($_POST['duration']);
-        $contract->setIdClient($_POST['clientNum']);
+        if (isConnected()) {
+            $contract = new Contract();
+            $contract->setId($_POST['id']);
+            $contract->setType($_POST['type']);
+            $contract->setMontant($_POST['sum']);
+            $contract->setDuree($_POST['duration']);
+            $contract->setIdClient($_POST['clientNum']);
 
-        $this->contractRepository->updateContract($contract);
+            $this->contractRepository->updateContract($contract);
 
-        header('Location: ?action=contract-list');
+            header('Location: ?action=contract-list');
+            exit;
+        }
     }
 
     public function delete(int $id)
     {
-        $this->contractRepository->deleteContract($id);
+        if (isConnected()) {
+            $this->contractRepository->deleteContract($id);
 
-        header('Location: ?action=contract-list');
+            header('Location: ?action=contract-list');
+            exit;
+        }
     }
 
 

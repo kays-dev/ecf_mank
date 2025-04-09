@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+require_once __DIR__ . '/lib/utils.php';
+require_once __DIR__ . '/controllers/AuthController.php';
+require_once __DIR__ . '/lib/utils.php';
+
+$authControl = new AuthController();
+
 require_once __DIR__ . '/controllers/ClientController.php';
 require_once __DIR__ . '/controllers/AccountController.php';
 require_once __DIR__ . '/controllers/ContractController.php';
@@ -8,11 +16,19 @@ $clientControl = new ClientController();
 $accountControl = new AccountController();
 $contractControl = new ContractController();
 
-
-$action = $_GET['action'] ?? 'dashboard';
+$action = $_GET['action'] ?? 'auth';
 $id = $_GET['id'] ?? null;
 
-switch ($action){
+switch ($action) {
+    case 'auth':
+        require_once __DIR__ . '/views/authViews/authentification.php';
+        break;
+    case 'auth-login':
+        $authControl->login();
+        break;
+    case 'auth-logout':
+        $authControl->logout();
+        break;
     case 'dashboard':
         require_once __DIR__ . '/views/dashboard.php';
         break;
@@ -79,7 +95,13 @@ switch ($action){
     case 'contract-delete':
         $contractControl->delete($id);
         break;
+    case '406':
+        require_once __DIR__ . '/views/authViews/406.php';
+        break;
+    case '401':
+        require_once __DIR__ . '/views/authViews/401.php';
+        break;
     default:
-        require_once __DIR__ . '/views/404.php';  
+        require_once __DIR__ . '/views/404.php';
         break;
 }
