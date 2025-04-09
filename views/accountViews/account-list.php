@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . '/../templates/header.php'; ?>
 
 <div class="container-fluid mb-5 bg-info pt-4 pb-2">
-    <h2 class="mb-4 text-dark">👤 Liste des comptes</h2>
+    <h2 class="mb-4 text-dark">🧾 Liste des comptes</h2>
 </div>
 
 <table class="table table-striped mb-5">

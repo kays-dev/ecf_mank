@@ -16,13 +16,13 @@
         <select class="form-control" name="type" id="type" required>
             <option value="selection" selected>Veuillez sélectionner une option</option>
             <option value="courant">Compte courant</option>
-            <option value="epargne">Compte épargne</option>
+            <option value="épargne">Compte épargne</option>
         </select>
     </div>
 
     <div class="mb-3">
         <label for="balance" class="form-label text-body-emphasis">Solde initial :</label>
-        <input type="number" min="0.000" step="any" class="form-control border-info-subtle bg-light-subtle currency-euro" id="balance" name="balance" required>
+        <input type="number" min="0.000" step="0.001" class="form-control border-info-subtle bg-light-subtle currency-euro" id="balance" name="balance" required>
     </div>
 
     <div class="mb-3">

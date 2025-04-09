@@ -22,13 +22,13 @@
         <label for="type" class="form-label text-body-emphasis">Type de compte :</label>
         <select class="form-control" name="type" id="type">
             <option <?= $type == 'courant' ? 'selected' : 'Veuillez sélectionner une option' ?> value="courant">Compte courant</option>
-            <option <?= $type == 'epargne' ? 'selected' : 'Veuillez sélectionner une option' ?> value="epargne">Compte épargne</option>
+            <option <?= $type == 'épargne' ? 'selected' : 'Veuillez sélectionner une option' ?> value="épargne">Compte épargne</option>
         </select>
     </div>
 
     <div class="mb-3">
         <label for="balance" class="form-label text-body-emphasis">Solde :</label>
-        <input type="number" class="form-control border-info-subtle bg-light-subtle currency-euro" id="balance" name="balance" value="<?= $account->getSolde() ?>">
+        <input type="number" class="form-control border-info-subtle bg-light-subtle currency-euro" min="0" step="0.001" id="balance" name="balance" value="<?= $account->getSolde() ?>">
     </div>
 
     <div class="mb-5">
