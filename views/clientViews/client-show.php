@@ -15,6 +15,8 @@
 <p class="mb-5"><strong>Adresse : </strong> <?= $client->getAdresse() ?></p>
 
 <a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-info mb-3">✏️ Modifier les détails du client</a>
+<a href="?action=account-list-by-client&id=<?= $client->getId() ?>" class="btn btn-info mb-3">🧾 Consulter les comptes du client</a>
+<a href="?action=contract-list-by-client&id=<?= $client->getId() ?>" class="btn btn-info mb-3">🖋 Consulter les contrats du client</a>
 <a href="?action=client-list" class="btn btn-light mb-3">🔙 Retour à la liste des clients</a>
 
 <?php require_once __DIR__ . '/../templates/footer.php'; 

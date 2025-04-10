@@ -52,6 +52,18 @@ class ContractController
         }
     }
 
+    public function listByClient(int $clientId)
+    {
+        if (isConnected()) {
+            $contract = $this->contractRepository->viewContract($clientId);
+            $contracts = $this->contractRepository->viewContractsByClient($clientId);
+
+            require_once __DIR__ . '/../views/contractViews/contract-list-by-client.php';
+                        
+            exit;
+        }
+    }
+
     public function show(int $id)
     {
         if (isConnected()) {

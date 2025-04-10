@@ -40,11 +40,33 @@ class AccountRepository
             $account->setRib($arrRow['account_rib']);
             $account->setType($arrRow['account_type']);
             $account->setSolde($arrRow['account_balance']);
-            $account->setIdClient($arrRow['account_id']);
+            $account->setIdClient($arrRow['client_id']);
 
             $accounts[] = $account;
         }
         return $accounts;
+    }
+
+    public function viewAccountsByClient($clientId): array{
+        $statement = $this->connection->getConnected()->prepare("SELECT * FROM comptes WHERE client_id=$clientId;");
+
+        $statement->execute();
+
+        $resultArr = $statement->fetchAll();
+
+        $accounts = [];
+        foreach ($resultArr as $arrRow) {
+            $account = new Account();
+            $account->setId($arrRow['account_id']);
+            $account->setRib($arrRow['account_rib']);
+            $account->setType($arrRow['account_type']);
+            $account->setSolde($arrRow['account_balance']);
+
+            $accounts[] = $account;
+        }
+
+        return $accounts;
+
     }
 
     public function viewAccount(int $id): ?Account
@@ -86,7 +108,7 @@ class AccountRepository
 
     public function deleteAccount(int $id): bool
     {
-
+        
         $statement = $this->connection->getConnected()->prepare("DELETE FROM comptes WHERE account_id=:id");
         $statement->bindParam(':id', $id);
 

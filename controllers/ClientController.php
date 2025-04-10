@@ -1,15 +1,36 @@
 <?php
 
 require_once __DIR__ . '/../models/repositories/ClientRepository.php';
+require_once __DIR__ . '/../models/repositories/AccountRepository.php';
+require_once __DIR__ . '/../models/repositories/ContractRepository.php';
 require_once __DIR__ . '/../lib/utils.php';
 
 class ClientController
 {
     private ClientRepository $clientRepository;
+    private AccountRepository $accountRepository;
+    private ContractRepository $contractRepository;
 
     public function __construct()
     {
         $this->clientRepository = new ClientRepository();
+        $this->accountRepository = new AccountRepository();
+        $this->contractRepository = new ContractRepository();
+    }
+
+    public function dashboard()
+    {
+        if (isConnected()) {
+            $clients = $this->clientRepository->viewClients() ;
+
+            $accounts = $this->accountRepository->viewAccounts() ;
+
+            $contracts = $this->contractRepository->viewContracts() ;
+
+            require_once __DIR__ . '/../views/dashboard.php';
+
+            exit;
+        }
     }
 
     public function create()
@@ -89,9 +110,11 @@ class ClientController
     public function delete(int $id)
     {
         if (isConnected()) {
+            
             $this->clientRepository->deleteClient($id);
 
             header('Location: ?action=client-list');
+            
             exit;
         }
     }

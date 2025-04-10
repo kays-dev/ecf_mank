@@ -91,7 +91,8 @@ class ClientRepository
     public function deleteClient(int $id): bool
     {
 
-        $statement = $this->connection->getConnected()->prepare("DELETE FROM clients WHERE client_id=:id");
+        $statement = $this->connection->getConnected()
+        ->prepare("DELETE FROM clients WHERE client_id=:id;");
         $statement->bindParam(':id', $id);
 
         return $statement->execute();

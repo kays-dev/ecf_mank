@@ -55,6 +55,18 @@ class AccountController
         }
     }
 
+    public function listByClient(int $clientId)
+    {
+        if (isConnected()) {
+            $account = $this->accountRepository->viewAccount($clientId);
+            $accounts = $this->accountRepository->viewAccountsByClient($clientId);
+
+            require_once __DIR__ . '/../views/accountViews/account-list-by-client.php';
+                        
+            exit;
+        }
+    }
+
     public function show(int $id)
     {
         if (isConnected()) {

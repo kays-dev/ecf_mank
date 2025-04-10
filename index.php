@@ -30,7 +30,7 @@ switch ($action) {
         $authControl->logout();
         break;
     case 'dashboard':
-        require_once __DIR__ . '/views/dashboard.php';
+        $clientControl->dashboard();
         break;
     case 'client-create':
         $clientControl->create();
@@ -56,10 +56,16 @@ switch ($action) {
     case 'account-list':
         $accountControl->list();
         break;
+    case 'account-list-by-client':
+        $accountControl->listByClient($id);
+        break;
     case 'contract-list':
         $contractControl->list();
         break;
-    case 'client-consult':
+    case 'contract-list-by-client':
+        $contractControl->listByClient($id);
+        break;
+    case 'client-show':
         $clientControl->show($id);
         break;
     case 'account-show':

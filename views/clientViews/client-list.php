@@ -28,7 +28,7 @@
                 <td><?= $client->getAdresse(); ?></td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <a href="?action=client-consult&id=<?= $client->getId() ?>" class="btn btn-light">👁‍🗨 Consulter</a>
+                        <a href="?action=client-show&id=<?= $client->getId() ?>" class="btn btn-light">👁‍🗨 Consulter</a>
                         <a href="?action=client-edit&id=<?= $client->getId() ?>" class="btn btn-warning">✏️ Modifier</a>
                         <a onclick="return confirm('Voulez vous vraiment supprimer le client ?');"
                             href="?action=client-delete&id=<?= $client->getId() ?>" class="btn btn-danger">✖ Supprimer</a>

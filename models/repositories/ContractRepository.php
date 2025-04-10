@@ -47,6 +47,27 @@ class ContractRepository
         return $contracts;
     }
 
+    public function viewContractsByClient($clientId): array{
+
+        $statement = $this->connection->getConnected()->prepare("SELECT * FROM contracts WHERE client_id=$clientId;");
+
+        $statement->execute();
+
+        $resultArr = $statement->fetchAll();
+
+        $contracts = [];
+        foreach ($resultArr as $resultVal) {
+            $contract = new Contract();
+            $contract->setId($resultVal['contract_id']);
+            $contract->setType($resultVal['contract_type']);
+            $contract->setMontant($resultVal['contract_sum']);
+            $contract->setDuree($resultVal['contract_duration']);
+
+            $contracts[] = $contract;
+        }
+        return $contracts;
+    }
+
     public function viewContract(int $id): ?Contract
     {
         $statement = $this->connection->getConnected()->prepare("SELECT * FROM contracts WHERE contract_id=$id;");

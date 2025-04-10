@@ -9,11 +9,14 @@
         <h4 class="mb-4 text-dark">Clients</h4>
     </div>
 
-    <div class="container-fluid mb-3">
+    <div>
+        <div class="container-fluid mb-5">
+            <h6>Nombre total de clients</h6>
+            <p><?= count($clients) ?></p>
+        </div>
 
+        <a href="?action=client-list" class="btn btn-info mb-5">👤 Accèder au gestionnaire des clients</a>
     </div>
-
-    <a href="?action=client-list" class="btn btn-info mb-5">👤 Accèder au gestionnaire des clients</a>
 </div>
 
 <div>
@@ -21,23 +24,28 @@
         <h4 class="mb-4 text-dark">Comptes bancaires</h4>
     </div>
 
-    <div class="container-fluid mb-3">
+    <div>
+        <div class="container-fluid mb-5">
+            <h6>Nombre total de comptes</h6>
+            <p class="text-light"><?= count($accounts) ?></p>
+        </div>
 
+        <a href="?action=account-list" class="btn btn-info mb-5">🧾 Accèder au gestionnaire des comptes</a>
     </div>
-
-    <a href="?action=account-list" class="btn btn-info mb-5">🧾 Accèder au gestionnaire des comptes</a>
 </div>
 
 <div>
     <div class="container-fluid mb-5 bg-light">
         <h4 class="mb-4 text-dark">Contrats</h4>
     </div>
+    <div>
+        <div class="container-fluid mb-5">
+            <h6>Nombre total de contrats</h6>
+            <p><?= count($contracts) ?></p>
+        </div>
 
-    <div class="container-fluid mb-3">
-
+        <a href="?action=account-list" class="btn btn-info mb-5">🖋 Accèder au gestionnaire des contrats</a>
     </div>
-
-    <a href="?action=account-list" class="btn btn-info mb-5">🖋 Accèder au gestionnaire des contrats</a>
 </div>
 
 <?php require_once __DIR__ . '/templates/footer.php';
